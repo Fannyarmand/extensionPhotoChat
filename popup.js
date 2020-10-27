@@ -2,8 +2,26 @@
 // Apparemment il faut utiliser la fonction browser.tabs.executeScript pour lier le popup.js avec le content.js :) let's go baby!
 var btnKitten = document.getElementById("kitten");
 btnKitten.addEventListener('click', function () {
-console.log("kitten");
+  chrome.tabs.executeScript(null, { file: "content.js" });
 })
+
+var btnRabbit = document.getElementById("rabbit");
+btnRabbit.addEventListener('click', function () {
+  chrome.tabs.executeScript(null, { file: "rabbit.js" });
+})
+
+var btnDeer = document.getElementById("deer");
+btnDeer.addEventListener('click', function () {
+  chrome.tabs.executeScript(null, { file: "deer.js" });
+})
+
+var btnPuppy = document.getElementById("puppy");
+btnPuppy.addEventListener('click', function () {
+  chrome.tabs.executeScript(null, { file: "puppy.js" });
+})
+
+
+
 
 
 // var listOfImages = Array.from(document.getElementsByTagName("img").innerHTML);
