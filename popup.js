@@ -2,23 +2,40 @@
 // Apparemment il faut utiliser la fonction browser.tabs.executeScript pour lier le popup.js avec le content.js :) let's go baby!
 var btnKitten = document.getElementById("kitten");
 btnKitten.addEventListener('click', function () {
-  chrome.tabs.executeScript(null, { file: "content.js" });
-})
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.executeScript(tabs[0].id, {file: 'content.js'}, function() {
+      chrome.tabs.sendMessage(tabs[0].id, 'kitten');
+    });
+   });
+  })
 
 var btnRabbit = document.getElementById("rabbit");
 btnRabbit.addEventListener('click', function () {
-  chrome.tabs.executeScript(null, { file: "rabbit.js" });
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.executeScript(tabs[0].id, {file: 'content.js'}, function() {
+      chrome.tabs.sendMessage(tabs[0].id, 'rabbit');
+    });
+   });
 })
 
 var btnDeer = document.getElementById("deer");
 btnDeer.addEventListener('click', function () {
-  chrome.tabs.executeScript(null, { file: "deer.js" });
-})
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.executeScript(tabs[0].id, {file: 'content.js'}, function() {
+      chrome.tabs.sendMessage(tabs[0].id, 'deer');
+    });
+   });
+ })
 
 var btnPuppy = document.getElementById("puppy");
 btnPuppy.addEventListener('click', function () {
-  chrome.tabs.executeScript(null, { file: "puppy.js" });
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.executeScript(tabs[0].id, {file: 'content.js'}, function() {
+      chrome.tabs.sendMessage(tabs[0].id, 'puppy');
+    });
+   });
 })
+
 
 
 
